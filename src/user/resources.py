@@ -2,7 +2,7 @@ from flask import jsonify, Blueprint, request
 from src.user.repo import RepoReadUser, RepoWriteUser
 
 
-user_routes = Blueprint("api_routes", __name__)
+user_routes = Blueprint("user_routes", __name__)
 
 
 @user_routes.route("/api/users", methods=["GET"])
