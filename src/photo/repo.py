@@ -1,5 +1,6 @@
-from src.photo.models import Photo
 import boto3
+
+from src.photo.models import Photo
 
 
 class RepoReadPhoto:

@@ -1,7 +1,7 @@
 from src.user.repo import RepoReadUser, RepoWriteUser
 
 
-def get_users_by_id(users):
+def get_users_by_id(users: list) -> list:
 
     message = []
     users = RepoReadUser().get_users_by_id(users)
@@ -22,7 +22,7 @@ def get_users_by_id(users):
     return message
 
 
-def get_all_users_registered():
+def get_all_users_registered() -> list:
 
     message = []
     users = RepoReadUser().get_all_users()
@@ -43,7 +43,7 @@ def get_all_users_registered():
     return message
 
 
-def create_new_user(user_params):
+def create_new_user(user_params) -> dict:
 
     message = {}
 
@@ -64,7 +64,7 @@ def create_new_user(user_params):
     return message
 
 
-def user_is_bride_or_groom(user_id):
+def user_is_bride_or_groom(user_id: str) -> bool:
     user = RepoReadUser().get_one_user_by_id(user_id)
 
     if user.is_bride_or_groom:
