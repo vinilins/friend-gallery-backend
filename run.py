@@ -9,6 +9,8 @@ from src.user.resources import user_routes
 
 app = Flask(__name__)
 
+app.run(debug=False, port=getenv("PORT", 4444), host="0.0.0.0")
+
 db_connection = DBConnectionHandler()
 db_connection.get_db_engine()
 
