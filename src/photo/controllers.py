@@ -4,6 +4,10 @@ from src.photo.models import Photo
 from src.photo.repo import RepoReadPhoto, RepoWritePhoto
 
 
+def get_photo_from_request(request) -> Photo:
+    return list(request.files.values())[0]
+
+
 def make_upload_photo(photo: FileStorage) -> Photo:
     return RepoWritePhoto().upload_photo(photo)
 

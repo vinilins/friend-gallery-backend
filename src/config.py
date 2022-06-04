@@ -26,7 +26,13 @@ class DevelopmentConfig(Config):
     LOG_LEVEL = "DEBUG"
 
 
+class TestingConfig(Config):
+    ENV = "testing"
+    TESTING = True
+
+
 config_by_name = {
     "development": DevelopmentConfig,
     "production": ProductionConfig,
+    "testing": TestingConfig,
 }

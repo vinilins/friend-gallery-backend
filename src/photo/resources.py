@@ -6,6 +6,7 @@ from flask_jwt_extended import (
 from src.photo.controllers import (
     get_all_photos,
     get_photos_approved_or_not,
+    get_photo_from_request,
     make_photo_approved,
     make_upload_photo,
 )
@@ -19,7 +20,7 @@ photo_routes = Blueprint("photo_routes", __name__)
 @jwt_required()
 def post_photo():
 
-    photo_params = list(request.files.values())[0]
+    photo_params = get_photo_from_request(request)
 
     try:
         photo = make_upload_photo(photo_params)

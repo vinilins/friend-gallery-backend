@@ -18,7 +18,7 @@ def login():
             token = create_acess_token(user.id)
 
             return jsonify({"token": str(token)}), 200
-
+        print(f"\noi: {user}, {correct}\n")
         return (
             jsonify({"status_code": 401, "body": {"error": "Incorrect Datas!"}}),
             401,
