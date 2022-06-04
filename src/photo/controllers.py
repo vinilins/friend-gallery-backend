@@ -4,6 +4,17 @@ from src.photo.models import Photo
 from src.photo.repo import RepoReadPhoto, RepoWritePhoto
 
 
+def add_like_on_photo(photo_id, user_id):
+    photo = RepoReadPhoto().get_one_photo_by_id(photo_id)
+
+    if photo:
+        if user_id not in photo.who_liked:
+            RepoWritePhoto().add_like(photo=photo, user_id=user_id)
+            return photo
+
+    return None
+
+
 def get_photo_from_request(request) -> Photo:
     return list(request.files.values())[0]
 

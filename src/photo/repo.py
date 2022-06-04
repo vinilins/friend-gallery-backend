@@ -47,3 +47,9 @@ class RepoWritePhoto:
             return photo
         except Exception as error:
             raise Exception(f"Error in upload new Photo: {error}")
+
+    @staticmethod
+    def add_like(photo, user_id) -> Photo:
+        photo.who_liked.append(user_id)
+        photo.save()
+        return photo
