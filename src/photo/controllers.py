@@ -1,3 +1,4 @@
+import boto3
 from werkzeug.datastructures import FileStorage
 from src.photo.models import Photo
 from src.photo.repo import RepoReadPhoto, RepoWritePhoto
@@ -26,3 +27,11 @@ def make_photo_approved(id: str, approved: str) -> Photo:
     photo.save()
 
     return photo
+
+
+def s3_init_app(app):
+    app.extensions["s3"] = boto3.client(
+        "s3",
+        aws_access_key_id=app.config["AWS_ID_KEY"],
+        aws_secret_access_key=app.config["AWS_PASSWORD_KEY"],
+    )

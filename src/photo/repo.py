@@ -1,5 +1,4 @@
-import boto3
-
+from flask import current_app
 from src.photo.models import Photo
 
 
@@ -32,9 +31,10 @@ class RepoWritePhoto:
 
     @staticmethod
     def upload_photo(image) -> Photo:
-        s3 = boto3.resource("s3")
-        gallery_bucket = s3.Bucket("gallery-friend")
-        gallery_bucket.upload_fileobj(Fileobj=image, Key=image.name)
+        s3 = current_app.extensions["s3"]
+        bucket_name = current_app.config["AWS_BUCKET"]
+
+        s3.upload_fileobj(Bucket=bucket_name, Fileobj=image, Key=image.name)
 
         bucket_link_photo = (
             "https://gallery-friend.s3.sa-east-1.amazonaws.com/" + image.name

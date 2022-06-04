@@ -1,1 +1,1 @@
-web: gunicorn -b :4444 run:app
+web: gunicorn run:app
