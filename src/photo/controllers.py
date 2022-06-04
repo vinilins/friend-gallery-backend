@@ -2,9 +2,10 @@ import boto3
 from werkzeug.datastructures import FileStorage
 from src.photo.models import Photo
 from src.photo.repo import RepoReadPhoto, RepoWritePhoto
+from typing import Optional
 
 
-def add_like_on_photo(photo_id, user_id):
+def add_like_on_photo(photo_id: Photo, user_id: str) -> Optional[Photo]:
     photo = RepoReadPhoto().get_one_photo_by_id(photo_id)
 
     if photo:
